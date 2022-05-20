@@ -1,8 +1,9 @@
+import React from "react";
 import "./App.css";
 import data from "./pokemonData";
 
 function App() {
-  console.log(data);
+  const [ pokemonList, setPokemonList ] = React.useState(data);
   return (
     <div className="App">
       <header className="App-header">
