@@ -1,3 +1,4 @@
+import "./Search.css";
 export default function Search() {
   return (
     <form className="searcher">
