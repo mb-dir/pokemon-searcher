@@ -1,11 +1,21 @@
+import "./PokemonList.css";
+
 export default pokemonData => {
   const pokemonList = pokemonData.pokemonData.map(pokemon => {
     return (
-      <li key={pokemon.name}>
-        <img src={pokemon.url} alt={pokemon.name} />
-        <p>{pokemon.name}</p>
+      <li className="pokemonList__item" key={pokemon.name}>
+        <img
+          className="pokemonList__pokemonImg"
+          src={pokemon.url}
+          alt={pokemon.name}
+        />
+        <p className="pokemonList__name">{pokemon.name}</p>
       </li>
     );
   });
-  return <ul>{pokemonList}</ul>;
+  return (
+    <main className="pokemonList">
+      <ul className="pokemonList__list">{pokemonList}</ul>
+    </main>
+  );
 };
