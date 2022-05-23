@@ -1,7 +1,15 @@
 import "./PokemonList.css";
 
 export default pokemonData => {
-  const pokemonList = pokemonData.pokemonData.map(pokemon => {
+  //If currentPokemonName is an empty string that means there is nothing typed in the input, so the app should display all pokemons, if it is not an empty string the list of pokemons will be filtered and finally only the maches pokemons will be displayed
+  const listToRender =
+    pokemonData.currentPokemonName === ""
+      ? pokemonData.pokemonData
+      : pokemonData.pokemonData.filter(pokemon => {
+          return pokemon.name.includes(pokemonData.currentPokemonName);
+        });
+
+  const pokemonList = listToRender.map(pokemon => {
     return (
       <li className="pokemonList__item" key={pokemon.name}>
         <img
