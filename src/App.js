@@ -19,7 +19,10 @@ function App() {
 
   return (
     <div className="App">
-      <Search />
+      <Search
+        updatePokemonName={updatePokemonName}
+        currentPokemonName={currentTypedPokemonName}
+      />
       <PokemonList pokemonData={pokemonList} />
     </div>
   );
