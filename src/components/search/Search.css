@@ -1,0 +1,17 @@
+.searcher {
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 200px;
+}
+.searcher__description {
+  margin-bottom: 10px;
+}
+.search__input {
+  height: 25px;
+  border-radius: 5px;
+  border: none;
+  border: 1px solid rgba(66, 68, 90, 1);
+}
