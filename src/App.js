@@ -16,6 +16,16 @@ function App() {
     setCurrentTypedPokemonName(name);
   }
 
+  //Auxiliary function related with data fetching - fetch("https://pokeapi.co/api/v2/pokemon/?limit=100") returns something like that: [{name: "bulbasaur"}, url: "https://pokeapi.co/api/v2/pokemon/1/"] so in order to get more details about the pokemon I have to do another request to above url. I decided to keep it in the array of promises(and later use Promise.all on it), below function creates Promise object - each Promise object will be pushed to special array
+  function createPokemonPromise(pokemonUrl) {
+    return new Promise((resolve, reject) => {
+      fetch(pokemonUrl)
+        .then(res => res.json())
+        .then(res => resolve(res))
+        .catch(err => reject.log(err));
+    });
+  }
+
   //Get data from API
   React.useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon/?limit=100")
