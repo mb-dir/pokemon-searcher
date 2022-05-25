@@ -16,6 +16,14 @@ function App() {
     setCurrentTypedPokemonName(name);
   }
 
+  //Get data from API
+  React.useEffect(() => {
+    fetch("https://pokeapi.co/api/v2/pokemon/?limit=100")
+      .then(res => res.json())
+      .then(res => console.log(res.results))
+      .catch(err => console.log(err));
+  }, []);
+
   return (
     <div className="App">
       <Search
