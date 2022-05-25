@@ -6,18 +6,32 @@ export default pokemonData => {
     pokemonData.currentPokemonName === ""
       ? pokemonData.pokemonData
       : pokemonData.pokemonData.filter(pokemon => {
-          return pokemon.name.includes(pokemonData.currentPokemonName);
+          return pokemon.pokemonName.includes(pokemonData.currentPokemonName);
         });
 
   const pokemonList = listToRender.map(pokemon => {
+    // Abilities and types are arrays, so rendering it is a little bit crazy
     return (
-      <li className="pokemonList__item" key={pokemon.name}>
+      <li className="pokemonList__item" key={pokemon.pokemonName}>
         <img
           className="pokemonList__pokemonImg"
-          src={pokemon.url}
-          alt={pokemon.name}
+          src={pokemon.pokemonImg}
+          alt={pokemon.pokemonName}
         />
-        <p className="pokemonList__name">{pokemon.name}</p>
+        <p className="pokemonList__name">{pokemon.pokemonName}</p>
+        {pokemon.pokemonTypes.map(el => {
+          return (
+            <p className="pokemonList__type" key={el.type.name}>
+              {el.type.name}
+            </p>
+          );
+        })}
+        <p className="pokemonList__ability">
+          abilities:{" "}
+          {pokemon.pokemonAbilities.map(el => {
+            return <span key={el.ability.name}>{`${el.ability.name} `}</span>;
+          })}
+        </p>
       </li>
     );
   });
