@@ -28,9 +28,18 @@ function App() {
 
   //Get data from API
   React.useEffect(() => {
+    const pokemonsPromisesArray = [];
     fetch("https://pokeapi.co/api/v2/pokemon/?limit=100")
       .then(res => res.json())
-      .then(res => console.log(res.results))
+      .then(res => {
+        res.results.forEach(el => {
+          //Gets each url, create Promise based on it, and push it to special array
+          const pokemonPromise = createPokemonPromise(el.url);
+          pokemonsPromisesArray.push(pokemonPromise);
+        });
+        return pokemonsPromisesArray;
+      })
+      .then(res => console.log(res))
       .catch(err => console.log(err));
   }, []);
 
