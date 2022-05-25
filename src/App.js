@@ -29,6 +29,7 @@ function App() {
   //Get data from API
   React.useEffect(() => {
     const pokemonsPromisesArray = [];
+    const pokemonsProperInfo = [];
     fetch("https://pokeapi.co/api/v2/pokemon/?limit=100")
       .then(res => res.json())
       .then(res => {
@@ -39,7 +40,27 @@ function App() {
         });
         return pokemonsPromisesArray;
       })
-      .then(res => console.log(res))
+      .then(res => {
+        //Async loop
+        async function fn() {
+          for (const pokemon of await Promise.all(res)) {
+            //From each promise gets the proper data
+            const { abilities, name, sprites, types } = pokemon;
+            //Create special object with those data
+            const pokemonObj = {
+              pokemonName: name,
+              pokemonAbilities: abilities,
+              pokemonTypes: types,
+              pokemonImg: sprites.front_default,
+            };
+            //Push it to special array
+            pokemonsProperInfo.push(pokemonObj);
+          }
+          //Set it as a state - now when we pass this state to PokemonList we pass only the proper data
+          setPokemonList(pokemonsProperInfo);
+        }
+        fn();
+      })
       .catch(err => console.log(err));
   }, []);
 
