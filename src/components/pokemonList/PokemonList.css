@@ -37,6 +37,15 @@
   width: 100px;
   margin: 0;
 }
+.pokemonList__type {
+  width: 100px;
+  margin: 0;
+  font-size: 12px;
+  color: rgb(31, 0, 168);
+}
+.pokemonList__ability {
+  font-size: 12px;
+}
 @media (min-width: 768px) {
   .pokemonList__item {
     width: 180px;
