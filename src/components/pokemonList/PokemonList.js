@@ -19,13 +19,11 @@ export default pokemonData => {
           alt={pokemon.pokemonName}
         />
         <p className="pokemonList__name">{pokemon.pokemonName}</p>
-        {pokemon.pokemonTypes.map(el => {
-          return (
-            <p className="pokemonList__type" key={el.type.name}>
-              {el.type.name}
-            </p>
-          );
-        })}
+        <p className="pokemonList__type">
+          {pokemon.pokemonTypes.map(el => {
+            return <span key={el.type.name}>{`${el.type.name} `}</span>;
+          })}
+        </p>
         <p className="pokemonList__ability">
           abilities:{" "}
           {pokemon.pokemonAbilities.map(el => {
