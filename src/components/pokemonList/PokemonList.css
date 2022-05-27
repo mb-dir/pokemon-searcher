@@ -34,6 +34,7 @@
 }
 .pokemonList__name {
   width: 100px;
+  font-weight: bold;
   margin: 0;
 }
 .pokemonList__type {
@@ -44,6 +45,7 @@
 }
 .pokemonList__ability {
   font-size: 12px;
+  margin: 3px;
 }
 @media (min-width: 768px) {
   .pokemonList {
