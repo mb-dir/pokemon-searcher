@@ -3,9 +3,7 @@
   -moz-box-shadow: 0px 0px 5px 0px rgba(66, 68, 90, 1);
   box-shadow: 0px 0px 5px 0px rgba(66, 68, 90, 1);
   border-radius: 5px;
-  width: 90%;
   min-height: 500px;
-  margin: 0 auto;
 }
 .pokemonList__list {
   margin: 0;
@@ -47,6 +45,10 @@
   font-size: 12px;
 }
 @media (min-width: 768px) {
+  .pokemonList {
+    width: 90%;
+    margin: 0 auto;
+  }
   .pokemonList__item {
     width: 180px;
     height: 180px;
