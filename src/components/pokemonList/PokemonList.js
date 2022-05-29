@@ -35,7 +35,14 @@ export default pokemonData => {
   });
   return (
     <main className="pokemonList">
-      <ul className="pokemonList__list">{pokemonList}</ul>
+      {/* If listToRender is empty that means there is no pokemon with name typed by user */}
+      {listToRender.length === 0 ? (
+        <p className="pokemonList__noFoundInfo">
+          No pokemon with this name was found
+        </p>
+      ) : (
+        <ul className="pokemonList__list">{pokemonList}</ul>
+      )}
     </main>
   );
 };
