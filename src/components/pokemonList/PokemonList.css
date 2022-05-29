@@ -5,6 +5,11 @@
   border-radius: 5px;
   min-height: 500px;
 }
+.pokemonList__noFoundInfo {
+  font-size: 36px;
+  font-weight: bold;
+  padding-top: 30px;
+}
 .pokemonList__list {
   margin: 0;
   padding: 0;
