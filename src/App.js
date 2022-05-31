@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import PokemonList from "./components/pokemonList/PokemonList";
 import Search from "./components/search/Search";
+import Pokedex from "./components/pokedex/Pokedex";
 
 function App() {
   const [ pokemonList, setPokemonList ] = React.useState([]);
@@ -66,6 +67,7 @@ function App() {
 
   return (
     <div className="App">
+      <Pokedex />
       <Search
         updatePokemonName={updatePokemonName}
         currentPokemonName={currentTypedPokemonName}
