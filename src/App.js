@@ -65,9 +65,17 @@ function App() {
       .catch(err => console.log(err));
   }, []);
 
+  //Pokedex related state
+
+  //Determines if Pokedex is open
+  const [ isPokedexOpen, setIsPokedexOpen ] = React.useState(false);
+  function togglePokedex() {
+    setIsPokedexOpen(prev => !prev);
+  }
+
   return (
     <div className="App">
-      <Pokedex />
+      <Pokedex isPokedexOpen={isPokedexOpen} togglePokedex={togglePokedex} />
       <Search
         updatePokemonName={updatePokemonName}
         currentPokemonName={currentTypedPokemonName}
