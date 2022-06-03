@@ -82,7 +82,11 @@ function App() {
 
   return (
     <div className="App">
-      <Pokedex isPokedexOpen={isPokedexOpen} togglePokedex={togglePokedex} />
+      <Pokedex
+        isPokedexOpen={isPokedexOpen}
+        togglePokedex={togglePokedex}
+        pokedexList={pokedexList}
+      />
       <Search
         updatePokemonName={updatePokemonName}
         currentPokemonName={currentTypedPokemonName}
