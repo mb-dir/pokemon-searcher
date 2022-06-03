@@ -71,7 +71,7 @@
   }
   .pokemonList__item {
     width: 180px;
-    height: 180px;
+    height: 200px;
     margin: 20px;
   }
 }
