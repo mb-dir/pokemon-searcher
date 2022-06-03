@@ -72,6 +72,13 @@ function App() {
   function togglePokedex() {
     setIsPokedexOpen(prev => !prev);
   }
+  //This list of pokemons is passed to Pokedex component, and based on it content of Pokdex is rendered
+  const [ pokedexList, setPokedexList ] = React.useState([]);
+  function updatePokedexList(pokemon) {
+    setPokedexList(prevList => {
+      return [ ...prevList, pokemon ];
+    });
+  }
 
   return (
     <div className="App">
