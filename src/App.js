@@ -90,6 +90,7 @@ function App() {
       <PokemonList
         pokemonData={pokemonList}
         currentPokemonName={currentTypedPokemonName}
+        updatePokedexList={updatePokedexList}
       />
     </div>
   );
