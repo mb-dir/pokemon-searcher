@@ -4,7 +4,28 @@ export default function Pokedex(pokedexData) {
   let pokemonsInPokedex;
   if (pokedexData.pokedexList.length > 0) {
     pokemonsInPokedex = pokedexData.pokedexList.map(pokemon => {
-      return <p>{pokemon.pokemonName}</p>;
+      //The structure is simillar to structure of item in PokemonList, so it wouldn't be a silly idea to create a separate component for this list so as not to duplicate the code
+      return (
+        <li className="pokemonList__item" key={pokemon.pokemonName}>
+          <img
+            className="pokemonList__pokemonImg"
+            src={pokemon.pokemonImg}
+            alt={pokemon.pokemonName}
+          />
+          <p className="pokemonList__name">{pokemon.pokemonName}</p>
+          <p className="pokemonList__type">
+            {pokemon.pokemonTypes.map(el => {
+              return <span key={el.type.name}>{`${el.type.name} `}</span>;
+            })}
+          </p>
+          <p className="pokemonList__ability">
+            abilities:{" "}
+            {pokemon.pokemonAbilities.map(el => {
+              return <span key={el.ability.name}>{`${el.ability.name} `}</span>;
+            })}
+          </p>
+        </li>
+      );
     });
   }
 
