@@ -6,7 +6,10 @@ export default function Pokedex(pokedexData) {
     pokemonsInPokedex = pokedexData.pokedexList.map(pokemon => {
       //The structure is simillar to structure of item in PokemonList, so it wouldn't be a silly idea to create a separate component for this list so as not to duplicate the code
       return (
-        <li className="pokemonList__item" key={pokemon.pokemonName}>
+        <li
+          className="pokemonList__item pokemonList__item--small"
+          key={pokemon.pokemonName}
+        >
           <img
             className="pokemonList__pokemonImg"
             src={pokemon.pokemonImg}
