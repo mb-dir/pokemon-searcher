@@ -24,6 +24,12 @@
   -moz-box-shadow: 0px 0px 5px 0px rgba(66, 68, 90, 1);
   box-shadow: 0px 0px 5px 0px rgba(66, 68, 90, 1);
 }
+.pokedex__content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
 .pokedex__body--open {
   display: block;
 }

@@ -49,7 +49,7 @@ export default function Pokedex(pokedexData) {
         <button onClick={pokedexData.togglePokedex} className="pokedex__close">
           X
         </button>
-        {pokemonsInPokedex}
+        <div className="pokedex__content">{pokemonsInPokedex}</div>
       </div>
     </div>
   );
