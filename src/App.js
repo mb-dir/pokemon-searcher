@@ -92,6 +92,14 @@ function App() {
       }
     });
   }
+  //This function is passed as a prop to Pokedex where is used in onClick event on btn which delete the pokemon form Pokedex
+  function deleteFromPokedex(pokemon) {
+    setPokedexList(prevList => {
+      return prevList.filter(el => {
+        return el.pokemonName !== pokemon.pokemonName;
+      });
+    });
+  }
 
   return (
     <div className="App">
