@@ -32,7 +32,7 @@ export default pokemonData => {
         </p>
         <button
           className="pokemonList__add"
-          onClick={() => pokemonData.updatePokedexList(pokemon)}
+          onClick={() => pokemonData.addToPokedex(pokemon)}
         >
           Add to Pokedex
         </button>

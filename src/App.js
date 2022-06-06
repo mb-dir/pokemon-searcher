@@ -74,7 +74,7 @@ function App() {
   }
   //This list of pokemons is passed to Pokedex component, and based on it content of Pokdex is rendered
   const [ pokedexList, setPokedexList ] = React.useState([]);
-  function updatePokedexList(pokemon) {
+  function addToPokedex(pokemon) {
     setPokedexList(prevList => {
       //Auxiliary function for determinating if the element(pokemon) already exists in our state
       //Based on: https://bobbyhadz.com/blog/javascript-check-if-array-contains-object
@@ -116,7 +116,7 @@ function App() {
       <PokemonList
         pokemonData={pokemonList}
         currentPokemonName={currentTypedPokemonName}
-        updatePokedexList={updatePokedexList}
+        addToPokedex={addToPokedex}
       />
     </div>
   );
