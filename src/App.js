@@ -107,6 +107,7 @@ function App() {
         isPokedexOpen={isPokedexOpen}
         togglePokedex={togglePokedex}
         pokedexList={pokedexList}
+        deleteFromPokedex={deleteFromPokedex}
       />
       <Search
         updatePokemonName={updatePokemonName}
