@@ -10,6 +10,7 @@ export default function Pokedex(pokedexData) {
           className="pokemonList__item pokemonList__item--small"
           key={pokemon.pokemonName}
         >
+          <button className="pokemonList__deleteFromPokedex">x</button>
           <img
             className="pokemonList__pokemonImg"
             src={pokemon.pokemonImg}

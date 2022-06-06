@@ -47,4 +47,16 @@
   width: 120px;
   height: 120px;
   font-size: 10px;
+  position: relative;
+}
+.pokemonList__deleteFromPokedex {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  position: absolute;
+  left: 10%;
+  background-color: beige;
+}
+.pokemonList__deleteFromPokedex:hover {
+  cursor: pointer;
 }
