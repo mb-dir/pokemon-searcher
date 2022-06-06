@@ -76,7 +76,20 @@ function App() {
   const [ pokedexList, setPokedexList ] = React.useState([]);
   function updatePokedexList(pokemon) {
     setPokedexList(prevList => {
-      return [ ...prevList, pokemon ];
+      //Auxiliary function for determinating if the element(pokemon) already exists in our state
+      //Based on: https://bobbyhadz.com/blog/javascript-check-if-array-contains-object
+      const isPokemonAlreadyExist = prevList.some(element => {
+        if (element.pokemonName === pokemon.pokemonName) {
+          return true;
+        }
+        return false;
+      });
+      //If the pokemon is already added to Pokedex do not add it again
+      if (isPokemonAlreadyExist) {
+        return [ ...prevList ];
+      } else {
+        return [ ...prevList, pokemon ];
+      }
     });
   }
 
