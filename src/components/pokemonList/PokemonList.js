@@ -30,6 +30,12 @@ export default pokemonData => {
             return <span key={el.ability.name}>{`${el.ability.name} `}</span>;
           })}
         </p>
+        <button
+          className="pokemonList__add"
+          onClick={() => pokemonData.addToPokedex(pokemon)}
+        >
+          Add to Pokedex
+        </button>
       </li>
     );
   });

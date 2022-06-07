@@ -1,0 +1,68 @@
+.pokedex {
+  position: absolute;
+  top: 0;
+  width: 400px;
+}
+.pokedex__inconContainer {
+  position: absolute;
+  top: -50px;
+  left: 0;
+}
+.pokedex__info {
+  margin: 0;
+}
+.pokedex__open {
+  width: 40px;
+  height: 40px;
+}
+.pokedex__open:hover {
+  cursor: pointer;
+}
+
+/* By default pokedex body is hidden */
+.pokedex__body {
+  display: none;
+  width: 400px;
+  min-height: 400px;
+  margin-top: 20px;
+  background-color: beige;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(66, 68, 90, 1);
+  box-shadow: 0px 0px 5px 0px rgba(66, 68, 90, 1);
+}
+.pokedex__content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.pokedex__body--open {
+  display: block;
+}
+.pokedex__close {
+  background-color: beige;
+  color: #dd1e24;
+  border: 3px solid #dd1e24;
+  padding: 2px 10px;
+  margin-top: 5px;
+}
+.pokedex__close:hover {
+  cursor: pointer;
+}
+.pokemonList__item--small {
+  width: 120px;
+  height: 120px;
+  font-size: 10px;
+  position: relative;
+}
+.pokemonList__deleteFromPokedex {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  position: absolute;
+  left: 10%;
+  background-color: beige;
+}
+.pokemonList__deleteFromPokedex:hover {
+  cursor: pointer;
+}

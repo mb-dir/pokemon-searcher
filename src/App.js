@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import PokemonList from "./components/pokemonList/PokemonList";
 import Search from "./components/search/Search";
+import Pokedex from "./components/pokedex/Pokedex";
 
 function App() {
   const [ pokemonList, setPokemonList ] = React.useState([]);
@@ -64,8 +65,59 @@ function App() {
       .catch(err => console.log(err));
   }, []);
 
+  //Pokedex related state
+
+  //Determines if Pokedex is open
+  const [ isPokedexOpen, setIsPokedexOpen ] = React.useState(false);
+  function togglePokedex() {
+    setIsPokedexOpen(prev => !prev);
+  }
+  //This list of pokemons is passed to Pokedex component, and based on it content of Pokdex is rendered
+  const [ pokedexList, setPokedexList ] = React.useState(() => {
+    return JSON.parse(window.localStorage.getItem("pokedex")) || [];
+  });
+  function addToPokedex(pokemon) {
+    setPokedexList(prevList => {
+      //Auxiliary function for determinating if the element(pokemon) already exists in our state
+      //Based on: https://bobbyhadz.com/blog/javascript-check-if-array-contains-object
+      const isPokemonAlreadyExist = prevList.some(element => {
+        if (element.pokemonName === pokemon.pokemonName) {
+          return true;
+        }
+        return false;
+      });
+      //If the pokemon is already added to Pokedex do not add it again
+      if (isPokemonAlreadyExist) {
+        return [ ...prevList ];
+      } else {
+        return [ ...prevList, pokemon ];
+      }
+    });
+  }
+  //This function is passed as a prop to Pokedex where is used in onClick event on btn which delete the pokemon form Pokedex
+  function deleteFromPokedex(pokemon) {
+    setPokedexList(prevList => {
+      return prevList.filter(el => {
+        return el.pokemonName !== pokemon.pokemonName;
+      });
+    });
+  }
+  //Each time when pokedexList is changed update the pokedex value in localStorage - thanks to this data in storage is up to date with app state
+  React.useEffect(
+    () => {
+      window.localStorage.setItem("pokedex", JSON.stringify(pokedexList));
+    },
+    [ pokedexList ]
+  );
+
   return (
     <div className="App">
+      <Pokedex
+        isPokedexOpen={isPokedexOpen}
+        togglePokedex={togglePokedex}
+        pokedexList={pokedexList}
+        deleteFromPokedex={deleteFromPokedex}
+      />
       <Search
         updatePokemonName={updatePokemonName}
         currentPokemonName={currentTypedPokemonName}
@@ -73,6 +125,7 @@ function App() {
       <PokemonList
         pokemonData={pokemonList}
         currentPokemonName={currentTypedPokemonName}
+        addToPokedex={addToPokedex}
       />
     </div>
   );
