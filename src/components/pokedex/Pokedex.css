@@ -3,6 +3,11 @@
   top: 0;
   width: 400px;
 }
+.pokedex__inconContainer {
+  position: absolute;
+  top: -50px;
+  left: 0;
+}
 .pokedex__info {
   margin: 0;
 }
@@ -19,6 +24,7 @@
   display: none;
   width: 400px;
   min-height: 400px;
+  margin-top: 20px;
   background-color: beige;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(66, 68, 90, 1);
   -moz-box-shadow: 0px 0px 5px 0px rgba(66, 68, 90, 1);
