@@ -100,6 +100,13 @@ function App() {
       });
     });
   }
+  //Each time when pokedexList is changed update the pokedex value in localStorage - thanks to this data in storage is up to date with app state
+  React.useEffect(
+    () => {
+      window.localStorage.setItem("pokedex", JSON.stringify(pokedexList));
+    },
+    [ pokedexList ]
+  );
 
   return (
     <div className="App">
