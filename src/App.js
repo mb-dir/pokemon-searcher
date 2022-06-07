@@ -73,7 +73,9 @@ function App() {
     setIsPokedexOpen(prev => !prev);
   }
   //This list of pokemons is passed to Pokedex component, and based on it content of Pokdex is rendered
-  const [ pokedexList, setPokedexList ] = React.useState([]);
+  const [ pokedexList, setPokedexList ] = React.useState(() => {
+    return JSON.parse(window.localStorage.getItem("pokedex")) || [];
+  });
   function addToPokedex(pokemon) {
     setPokedexList(prevList => {
       //Auxiliary function for determinating if the element(pokemon) already exists in our state
