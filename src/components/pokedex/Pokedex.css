@@ -1,12 +1,12 @@
 .pokedex {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 70px;
   width: 400px;
 }
 .pokedex__inconContainer {
   position: absolute;
   top: -50px;
-  left: 0;
+  left: 10px;
 }
 .pokedex__info {
   margin: 0;
@@ -22,8 +22,9 @@
 /* By default pokedex body is hidden */
 .pokedex__body {
   display: none;
+  overflow-y: scroll;
   width: 400px;
-  min-height: 400px;
+  height: 400px;
   margin-top: 20px;
   background-color: beige;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(66, 68, 90, 1);
