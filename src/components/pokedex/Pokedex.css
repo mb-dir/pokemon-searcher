@@ -1,12 +1,12 @@
 .pokedex {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 70px;
   width: 400px;
 }
 .pokedex__inconContainer {
   position: absolute;
   top: -50px;
-  left: 0;
+  left: 10px;
 }
 .pokedex__info {
   margin: 0;
