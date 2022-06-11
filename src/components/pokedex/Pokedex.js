@@ -56,7 +56,13 @@ export default function Pokedex(pokedexData) {
         <button onClick={pokedexData.togglePokedex} className="pokedex__close">
           X
         </button>
-        <div className="pokedex__content">{pokemonsInPokedex}</div>
+        <div className="pokedex__content">
+          {pokedexData.pokedexList.length === 0 ? (
+            <p>Your Pokedex is empty</p>
+          ) : (
+            pokemonsInPokedex
+          )}
+        </div>
       </div>
     </div>
   );
