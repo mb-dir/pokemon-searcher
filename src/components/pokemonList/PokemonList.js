@@ -50,13 +50,15 @@ export default pokemonData => {
 
   return (
     <main className="pokemonList">
-      {/* If listToRender is empty that means there is no pokemon with name typed by user */}
-      {listToRender.length === 0 ? (
+      {/* If listToRender is empty and there is something typed and request is resolved that means there is no pokemon with name typed by user */}
+      {listToRender.length === 0 &&
+      pokemonData.currentPokemonName !== "" &&
+      pokemonData.requestStatus === "resovled" ? (
         <p className="pokemonList__noFoundInfo">
           No pokemon with this name was found
         </p>
       ) : (
-        <ul className="pokemonList__list">{pokemonList}</ul>
+        <ul className="pokemonList__list">{pokemonListContent}</ul>
       )}
     </main>
   );
