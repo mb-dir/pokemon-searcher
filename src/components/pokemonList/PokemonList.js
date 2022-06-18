@@ -39,6 +39,15 @@ export default pokemonData => {
       </li>
     );
   });
+
+  // Determine the content based on request status
+  let pokemonListContent = <p>Wait for pokemons</p>;
+  if (pokemonData.requestStatus === "rejected") {
+    pokemonListContent = <p>Something went wrong, try to reset the app</p>;
+  } else if (pokemonData.requestStatus === "resovled") {
+    pokemonListContent = pokemonList;
+  }
+
   return (
     <main className="pokemonList">
       {/* If listToRender is empty that means there is no pokemon with name typed by user */}

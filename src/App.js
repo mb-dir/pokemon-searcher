@@ -131,6 +131,7 @@ function App() {
         pokemonData={pokemonList}
         currentPokemonName={currentTypedPokemonName}
         addToPokedex={addToPokedex}
+        requestStatus={requestStatus}
       />
     </div>
   );
