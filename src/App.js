@@ -6,6 +6,8 @@ import Pokedex from "./components/pokedex/Pokedex";
 
 function App() {
   const [ pokemonList, setPokemonList ] = React.useState([]);
+  //Determine request status - based on this user will see the info if the pokemons are fetching/if something goes wrong or if everything is fine user will see the pokemonList
+  const [ requestStatus, setRequestStatus ] = React.useState("pending");
 
   //This state + function are passed to Search component - Search component updates the currentTypedPokemonName, and based on this in PokemonList the pokemonList is filtered and finally we see only pokemons which match to the typed name
   const [
@@ -59,10 +61,13 @@ function App() {
           }
           //Set it as a state - now when we pass this state to PokemonList we pass only the proper data
           setPokemonList(pokemonsProperInfo);
+          setRequestStatus("resovled");
         }
         fn();
       })
-      .catch(err => console.log(err));
+      .catch(() => {
+        setRequestStatus("rejected");
+      });
   }, []);
 
   //Pokedex related state
@@ -126,6 +131,7 @@ function App() {
         pokemonData={pokemonList}
         currentPokemonName={currentTypedPokemonName}
         addToPokedex={addToPokedex}
+        requestStatus={requestStatus}
       />
     </div>
   );
