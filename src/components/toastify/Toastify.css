@@ -3,20 +3,22 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%);
+  background-color: beige;
+  padding: 20px;
   display: none;
 }
 
 .toastifyBody--open {
   display: block;
   animation-name: show;
-  animation-duration: 2000ms;
+  animation-duration: 3000ms;
 }
 
 @keyframes show {
   0% {
     opacity: 1;
   }
-  50% {
+  75% {
     opacity: 0.5;
   }
   100% {
