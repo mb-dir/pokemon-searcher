@@ -1,6 +1,10 @@
 import "./PokemonList.css";
+import Toastify from "../toastify/Toastify";
+import { useToastify } from "../../hooks/use-toastify";
 
 export default function PokemonList(pokemonData) {
+  const [ isToastifyOpen, open, close ] = useToastify();
+
   const listToRender =
     pokemonData.currentPokemonName === ""
       ? pokemonData.pokemonData
@@ -30,7 +34,11 @@ export default function PokemonList(pokemonData) {
         </p>
         <button
           className="pokemonList__add"
-          onClick={() => pokemonData.addToPokedex(pokemon)}
+          onClick={() => {
+            pokemonData.addToPokedex(pokemon);
+            open();
+            setTimeout(close, 3000);
+          }}
         >
           Add to Pokedex
         </button>
@@ -47,6 +55,7 @@ export default function PokemonList(pokemonData) {
 
   return (
     <main className="pokemonList">
+      <Toastify isToastifyOpen={isToastifyOpen} content="Pokemon was added" />
       {listToRender.length === 0 &&
       pokemonData.currentPokemonName !== "" &&
       pokemonData.requestStatus === "resovled" ? (

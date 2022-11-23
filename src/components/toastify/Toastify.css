@@ -1,0 +1,28 @@
+.toastifyBody {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: beige;
+  padding: 20px;
+  display: none;
+}
+
+.toastifyBody--open {
+  display: block;
+  animation-name: show;
+  animation-duration: 3000ms;
+}
+
+@keyframes show {
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}

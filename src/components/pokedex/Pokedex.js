@@ -1,6 +1,9 @@
 import "./Pokedex.css";
 import { TbPokeball } from "react-icons/tb";
+import Toastify from "../toastify/Toastify";
+import { useToastify } from "../../hooks/use-toastify";
 export default function Pokedex(pokedexData) {
+  const [ isToastifyOpen, open, close ] = useToastify();
   const pokemonsInPokedex = pokedexData.pokedexList.map(pokemon => {
     return (
       <li
@@ -10,6 +13,8 @@ export default function Pokedex(pokedexData) {
         <button
           onClick={() => {
             pokedexData.deleteFromPokedex(pokemon);
+            open();
+            setTimeout(close, 3000);
           }}
           className="pokemonList__deleteFromPokedex"
         >
@@ -38,6 +43,7 @@ export default function Pokedex(pokedexData) {
 
   return (
     <div className="pokedex">
+      <Toastify isToastifyOpen={isToastifyOpen} content="Pokemon was deleted" />
       <div className="pokedex__inconContainer">
         <p className="pokedex__info">Your Pokedex</p>
         <TbPokeball
