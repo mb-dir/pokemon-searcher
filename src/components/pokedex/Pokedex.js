@@ -2,7 +2,6 @@ import "./Pokedex.css";
 import { TbPokeball } from "react-icons/tb";
 export default function Pokedex(pokedexData) {
   const pokemonsInPokedex = pokedexData.pokedexList.map(pokemon => {
-    //The structure is simillar to structure of item in PokemonList, so it wouldn't be a silly idea to create a separate component for this list so as not to duplicate the code
     return (
       <li
         className="pokemonList__item pokemonList__item--small"
@@ -41,7 +40,6 @@ export default function Pokedex(pokedexData) {
     <div className="pokedex">
       <div className="pokedex__inconContainer">
         <p className="pokedex__info">Your Pokedex</p>
-        {/* User can open/close pokedex using this btn */}
         <TbPokeball
           onClick={pokedexData.togglePokedex}
           className="pokedex__open"
@@ -52,7 +50,6 @@ export default function Pokedex(pokedexData) {
           ? "pokedex__body--open"
           : ""}`}
       >
-        {/* User can close pokedex using this btn */}
         <button onClick={pokedexData.togglePokedex} className="pokedex__close">
           X
         </button>
