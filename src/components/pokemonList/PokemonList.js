@@ -1,6 +1,6 @@
 import "./PokemonList.css";
 
-export default pokemonData => {
+export default function PokemonList(pokemonData) {
   const listToRender =
     pokemonData.currentPokemonName === ""
       ? pokemonData.pokemonData
@@ -58,4 +58,4 @@ export default pokemonData => {
       )}
     </main>
   );
-};
+}
