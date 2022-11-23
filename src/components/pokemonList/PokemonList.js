@@ -1,4 +1,5 @@
 import "./PokemonList.css";
+import Toastify from "../toastify/Toastify";
 
 export default function PokemonList(pokemonData) {
   const listToRender =
@@ -47,6 +48,7 @@ export default function PokemonList(pokemonData) {
 
   return (
     <main className="pokemonList">
+      <Toastify />
       {listToRender.length === 0 &&
       pokemonData.currentPokemonName !== "" &&
       pokemonData.requestStatus === "resovled" ? (
