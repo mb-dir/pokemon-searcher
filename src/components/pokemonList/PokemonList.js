@@ -1,7 +1,6 @@
 import "./PokemonList.css";
 
 export default pokemonData => {
-  //If currentPokemonName is an empty string that means there is nothing typed in the input, so the app should display all pokemons, if it is not an empty string the list of pokemons will be filtered and finally only the maches pokemons will be displayed
   const listToRender =
     pokemonData.currentPokemonName === ""
       ? pokemonData.pokemonData
@@ -10,7 +9,6 @@ export default pokemonData => {
         });
 
   const pokemonList = listToRender.map(pokemon => {
-    // Abilities and types are arrays, so rendering it is a little bit crazy
     return (
       <li className="pokemonList__item" key={pokemon.pokemonName}>
         <img
@@ -40,7 +38,6 @@ export default pokemonData => {
     );
   });
 
-  // Determine the content based on request status
   let pokemonListContent = <p>Wait for pokemons</p>;
   if (pokemonData.requestStatus === "rejected") {
     pokemonListContent = <p>Something went wrong, try to reset the app</p>;
@@ -50,7 +47,6 @@ export default pokemonData => {
 
   return (
     <main className="pokemonList">
-      {/* If listToRender is empty and there is something typed and request is resolved that means there is no pokemon with name typed by user */}
       {listToRender.length === 0 &&
       pokemonData.currentPokemonName !== "" &&
       pokemonData.requestStatus === "resovled" ? (
