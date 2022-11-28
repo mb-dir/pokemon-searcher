@@ -1,0 +1,16 @@
+.pokemonCard__pokemonImg {
+  width: 50%;
+}
+.pokemonCard__name {
+  width: 100px;
+  font-weight: bold;
+  margin: 0 auto;
+}
+.pokemonCard__type {
+  width: 100px;
+  margin: 0 auto;
+  color: rgb(31, 0, 168);
+}
+.pokemonCard__ability {
+  margin: 3px;
+}
