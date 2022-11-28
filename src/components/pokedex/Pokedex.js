@@ -2,6 +2,7 @@ import "./Pokedex.css";
 import { TbPokeball } from "react-icons/tb";
 import Toastify from "../toastify/Toastify";
 import { useToastify } from "../../hooks/use-toastify";
+import PokemonCard from "../pokemonCard/PokemonCard";
 export default function Pokedex(pokedexData) {
   const [ isToastifyOpen, open, close ] = useToastify();
   const pokemonsInPokedex = pokedexData.pokedexList.map(pokemon => {
@@ -20,23 +21,12 @@ export default function Pokedex(pokedexData) {
         >
           x
         </button>
-        <img
-          className="pokemonList__pokemonImg"
-          src={pokemon.pokemonImg}
-          alt={pokemon.pokemonName}
+        <PokemonCard
+          name={pokemon.pokemonName}
+          img={pokemon.pokemonImg}
+          pokemonTypes={pokemon.pokemonTypes}
+          pokemonAbilities={pokemon.pokemonAbilities}
         />
-        <p className="pokemonList__name">{pokemon.pokemonName}</p>
-        <p className="pokemonList__type">
-          {pokemon.pokemonTypes.map(el => {
-            return <span key={el.type.name}>{`${el.type.name} `}</span>;
-          })}
-        </p>
-        <p className="pokemonList__ability">
-          abilities:{" "}
-          {pokemon.pokemonAbilities.map(el => {
-            return <span key={el.ability.name}>{`${el.ability.name} `}</span>;
-          })}
-        </p>
       </li>
     );
   });

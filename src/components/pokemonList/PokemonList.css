@@ -35,22 +35,6 @@
   flex-wrap: wrap;
   font-size: 12px;
 }
-.pokemonList__pokemonImg {
-  width: 50%;
-}
-.pokemonList__name {
-  width: 100px;
-  font-weight: bold;
-  margin: 0;
-}
-.pokemonList__type {
-  width: 100px;
-  margin: 0;
-  color: rgb(31, 0, 168);
-}
-.pokemonList__ability {
-  margin: 3px;
-}
 .pokemonList__add {
   background-color: #456fee;
   color: aliceblue;
