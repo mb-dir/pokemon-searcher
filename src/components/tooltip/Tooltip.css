@@ -13,6 +13,7 @@
   position: absolute;
   min-height: 70px;
   top: 115%;
+  z-index: 1;
 }
 .tooltip__card--visible {
   display: block;
