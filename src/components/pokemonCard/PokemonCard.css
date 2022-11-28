@@ -1,3 +1,7 @@
+.pokemonCard {
+  border-bottom: 1px solid rgba(66, 68, 90, .5);
+  padding: 5px 0;
+}
 .pokemonCard__pokemonImg {
   width: 50%;
 }
