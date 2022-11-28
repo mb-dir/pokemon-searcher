@@ -1,6 +1,6 @@
 import "./Tooltip.css";
 import React from "react";
-export default function Tooltip({ children }) {
+export default function Tooltip({ children, content }) {
   const [ isVisible, setIsVisible ] = React.useState(false);
   return (
     <div
@@ -8,9 +8,9 @@ export default function Tooltip({ children }) {
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
     >
-      <div
-        className={`tooltip__card ${isVisible && "tooltip__card--visible"}`}
-      />
+      <div className={`tooltip__card ${isVisible && "tooltip__card--visible"}`}>
+        {content}
+      </div>
       {children}
     </div>
   );
