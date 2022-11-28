@@ -41,12 +41,23 @@ function App() {
       .then(res => {
         async function fn() {
           for (const pokemon of await Promise.all(res)) {
-            const { abilities, name, sprites, types } = pokemon;
+            const {
+              abilities,
+              name,
+              sprites,
+              types,
+              base_experience,
+              height,
+              weight,
+            } = pokemon;
             const pokemonObj = {
               pokemonName: name,
               pokemonAbilities: abilities,
               pokemonTypes: types,
               pokemonImg: sprites.front_default,
+              pokemonBaseExperience: base_experience,
+              pokemonHeight: height,
+              pokemonWeight: weight,
             };
             pokemonsProperInfo.push(pokemonObj);
           }

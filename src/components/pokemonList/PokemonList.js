@@ -2,6 +2,7 @@ import "./PokemonList.css";
 import Toastify from "../toastify/Toastify";
 import { useToastify } from "../../hooks/use-toastify";
 import PokemonCard from "../pokemonCard/PokemonCard";
+import Tooltip from "../tooltip/Tooltip";
 
 export default function PokemonList(pokemonData) {
   const [ isToastifyOpen, open, close ] = useToastify();
@@ -14,15 +15,24 @@ export default function PokemonList(pokemonData) {
         });
 
   const pokemonList = listToRender.map(pokemon => {
-    console.log(pokemon);
     return (
       <li className="pokemonList__item" key={pokemon.pokemonName}>
-        <PokemonCard
-          name={pokemon.pokemonName}
-          img={pokemon.pokemonImg}
-          pokemonTypes={pokemon.pokemonTypes}
-          pokemonAbilities={pokemon.pokemonAbilities}
-        />
+        <Tooltip
+          content={
+            <div>
+              <p>Base experienice: {pokemon.pokemonBaseExperience}</p>
+              <p>Height: {pokemon.pokemonHeight}</p>
+              <p>Weight: {pokemon.pokemonWeight}</p>
+            </div>
+          }
+        >
+          <PokemonCard
+            name={pokemon.pokemonName}
+            img={pokemon.pokemonImg}
+            pokemonTypes={pokemon.pokemonTypes}
+            pokemonAbilities={pokemon.pokemonAbilities}
+          />
+        </Tooltip>
         <button
           className="pokemonList__add"
           onClick={() => {
