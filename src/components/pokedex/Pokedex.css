@@ -2,6 +2,7 @@
   position: fixed;
   top: 70px;
   width: 400px;
+  z-index: 1;
 }
 .pokedex__inconContainer {
   position: absolute;
