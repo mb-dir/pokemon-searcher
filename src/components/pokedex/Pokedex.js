@@ -22,6 +22,7 @@ export default function Pokedex(pokedexData) {
           x
         </button>
         <PokemonCard
+          className="pokemonCard--small"
           name={pokemon.pokemonName}
           img={pokemon.pokemonImg}
           pokemonTypes={pokemon.pokemonTypes}

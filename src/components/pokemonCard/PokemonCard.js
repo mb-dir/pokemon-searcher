@@ -5,9 +5,10 @@ export default function PokemonCard({
   img,
   pokemonTypes,
   pokemonAbilities,
+  className = "",
 }) {
   return (
-    <div className="pokemonCard">
+    <div className={`pokemonCard ${className}`}>
       <img className="pokemonCard__pokemonImg" src={img} alt={name} />
       <p className="pokemonCard__name">{name}</p>
       <p className="pokemonCard__type">
