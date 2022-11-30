@@ -13,12 +13,7 @@ export default function Pokedex(pokedexData) {
         <button
           onClick={() => {
             pokedexData.deleteFromPokedex(pokemon);
-            toast.info(`${pokemon.pokemonName} was deleted`, {
-              position: "top-right",
-              autoClose: 2000,
-              pauseOnHover: false,
-              draggable: false,
-            });
+            toast.info(`${pokemon.pokemonName} was deleted`);
           }}
           className="pokemonList__deleteFromPokedex"
         >

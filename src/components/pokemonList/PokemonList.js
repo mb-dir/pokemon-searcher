@@ -35,12 +35,7 @@ export default function PokemonList(pokemonData) {
           className="pokemonList__add"
           onClick={() => {
             pokemonData.addToPokedex(pokemon);
-            toast.info(`${pokemon.pokemonName} was added`, {
-              position: "top-right",
-              autoClose: 2000,
-              pauseOnHover: false,
-              draggable: false,
-            });
+            toast.info(`${pokemon.pokemonName} was added`);
           }}
         >
           Add to Pokedex
@@ -58,7 +53,12 @@ export default function PokemonList(pokemonData) {
 
   return (
     <main className="pokemonList">
-      <ToastContainer />
+      <ToastContainer
+        autoClose={2000}
+        closeOnClick
+        pauseOnFocusLoss={false}
+        pauseOnHover={false}
+      />
       {listToRender.length === 0 &&
       pokemonData.currentPokemonName !== "" &&
       pokemonData.requestStatus === "resovled" ? (
