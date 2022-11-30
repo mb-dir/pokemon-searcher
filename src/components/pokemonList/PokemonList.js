@@ -35,7 +35,12 @@ export default function PokemonList(pokemonData) {
           className="pokemonList__add"
           onClick={() => {
             pokemonData.addToPokedex(pokemon);
-            toast.info("Dupa");
+            toast.info(`${pokemon.pokemonName} was added`, {
+              position: "top-right",
+              autoClose: 2000,
+              pauseOnHover: false,
+              draggable: false,
+            });
           }}
         >
           Add to Pokedex

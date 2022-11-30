@@ -1,6 +1,8 @@
 import "./Pokedex.css";
 import { TbPokeball } from "react-icons/tb";
+import { toast } from "react-toastify";
 import PokemonCard from "../pokemonCard/PokemonCard";
+import "react-toastify/dist/ReactToastify.css";
 export default function Pokedex(pokedexData) {
   const pokemonsInPokedex = pokedexData.pokedexList.map(pokemon => {
     return (
@@ -11,6 +13,12 @@ export default function Pokedex(pokedexData) {
         <button
           onClick={() => {
             pokedexData.deleteFromPokedex(pokemon);
+            toast.info(`${pokemon.pokemonName} was deleted`, {
+              position: "top-right",
+              autoClose: 2000,
+              pauseOnHover: false,
+              draggable: false,
+            });
           }}
           className="pokemonList__deleteFromPokedex"
         >
