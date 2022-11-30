@@ -1,12 +1,10 @@
 import "./PokemonList.css";
-import Toastify from "../toastify/Toastify";
-import { useToastify } from "../../hooks/use-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import PokemonCard from "../pokemonCard/PokemonCard";
 import Tooltip from "../tooltip/Tooltip";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function PokemonList(pokemonData) {
-  const [ isToastifyOpen, open, close ] = useToastify();
-
   const listToRender =
     pokemonData.currentPokemonName === ""
       ? pokemonData.pokemonData
@@ -37,8 +35,7 @@ export default function PokemonList(pokemonData) {
           className="pokemonList__add"
           onClick={() => {
             pokemonData.addToPokedex(pokemon);
-            open();
-            setTimeout(close, 3000);
+            toast.info(`${pokemon.pokemonName} was added`);
           }}
         >
           Add to Pokedex
@@ -56,7 +53,12 @@ export default function PokemonList(pokemonData) {
 
   return (
     <main className="pokemonList">
-      <Toastify isToastifyOpen={isToastifyOpen} content="Pokemon was added" />
+      <ToastContainer
+        autoClose={2000}
+        closeOnClick
+        pauseOnFocusLoss={false}
+        pauseOnHover={false}
+      />
       {listToRender.length === 0 &&
       pokemonData.currentPokemonName !== "" &&
       pokemonData.requestStatus === "resovled" ? (
