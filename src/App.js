@@ -3,6 +3,7 @@ import "./App.css";
 import PokemonList from "./components/pokemonList/PokemonList";
 import Search from "./components/search/Search";
 import Pokedex from "./components/pokedex/Pokedex";
+import { setItemToStorage, getItemFromStorage } from "./helpers/storage";
 
 function App() {
   const [ pokemonList, setPokemonList ] = React.useState([]);
@@ -76,7 +77,7 @@ function App() {
     setIsPokedexOpen(prev => !prev);
   }
   const [ pokedexList, setPokedexList ] = React.useState(() => {
-    return JSON.parse(window.localStorage.getItem("pokedex")) || [];
+    return JSON.parse(getItemFromStorage("pokedex")) || [];
   });
   function addToPokedex(pokemon) {
     setPokedexList(prevList => {
@@ -102,7 +103,7 @@ function App() {
   }
   React.useEffect(
     () => {
-      window.localStorage.setItem("pokedex", JSON.stringify(pokedexList));
+      setItemToStorage("pokedex", JSON.stringify(pokedexList));
     },
     [ pokedexList ]
   );
