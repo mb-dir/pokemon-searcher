@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import PokemonCard from "../pokemonCard/PokemonCard";
 import "react-toastify/dist/ReactToastify.css";
 export default function Pokedex(pokedexData) {
-  const pokemonsInPokedex = pokedexData.pokedexList.map(pokemon => {
+  const pokemonsInPokedex = (pokedexData.pokedexList || []).map(pokemon => {
     return (
       <li
         className="pokemonList__item pokemonList__item--small"
