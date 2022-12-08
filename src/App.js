@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { PokemonList } from "./components/pokemonList/PokemonList";
 import { Search } from "./components/search/Search";
@@ -6,13 +6,10 @@ import { Pokedex } from "./components/pokedex/Pokedex";
 import { setItemToStorage, getItemFromStorage } from "./helpers/storage";
 
 function App() {
-  const [ pokemonList, setPokemonList ] = React.useState([]);
-  const [ requestStatus, setRequestStatus ] = React.useState("pending");
+  const [ pokemonList, setPokemonList ] = useState([]);
+  const [ requestStatus, setRequestStatus ] = useState("pending");
 
-  const [
-    currentTypedPokemonName,
-    setCurrentTypedPokemonName,
-  ] = React.useState("");
+  const [ currentTypedPokemonName, setCurrentTypedPokemonName ] = useState("");
 
   function updatePokemonName(name) {
     setCurrentTypedPokemonName(name);
@@ -27,7 +24,7 @@ function App() {
     });
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     const pokemonsPromisesArray = [];
     const pokemonsProperInfo = [];
     fetch("https://pokeapi.co/api/v2/pokemon/?limit=100")
@@ -72,11 +69,11 @@ function App() {
       });
   }, []);
 
-  const [ isPokedexOpen, setIsPokedexOpen ] = React.useState(false);
+  const [ isPokedexOpen, setIsPokedexOpen ] = useState(false);
   function togglePokedex() {
     setIsPokedexOpen(prev => !prev);
   }
-  const [ pokedexList, setPokedexList ] = React.useState(() => {
+  const [ pokedexList, setPokedexList ] = useState(() => {
     return JSON.parse(getItemFromStorage("pokedex")) || [];
   });
   function addToPokedex(pokemon) {
@@ -101,7 +98,7 @@ function App() {
       });
     });
   }
-  React.useEffect(
+  useEffect(
     () => {
       setItemToStorage("pokedex", JSON.stringify(pokedexList));
     },

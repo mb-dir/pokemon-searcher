@@ -1,8 +1,8 @@
 import "./Tooltip.css";
-import React from "react";
+import { useState } from "react";
 
 const Tooltip = ({ children, content }) => {
-  const [ isVisible, setIsVisible ] = React.useState(false);
+  const [ isVisible, setIsVisible ] = useState(false);
   return (
     <div
       className="tooltip"
