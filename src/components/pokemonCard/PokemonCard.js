@@ -1,12 +1,12 @@
 import "./PokemonCard.css";
 
-export default function PokemonCard({
+const PokemonCard = ({
   name,
   img,
   pokemonTypes,
   pokemonAbilities,
   className = "",
-}) {
+}) => {
   return (
     <div className={`pokemonCard ${className}`}>
       <img className="pokemonCard__pokemonImg" src={img} alt={name} />
@@ -24,4 +24,6 @@ export default function PokemonCard({
       </p>
     </div>
   );
-}
+};
+
+export { PokemonCard };

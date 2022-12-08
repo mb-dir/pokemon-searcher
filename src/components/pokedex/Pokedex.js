@@ -1,9 +1,10 @@
 import "./Pokedex.css";
 import { TbPokeball } from "react-icons/tb";
 import { toast } from "react-toastify";
-import PokemonCard from "../pokemonCard/PokemonCard";
+import { PokemonCard } from "../pokemonCard/PokemonCard";
 import "react-toastify/dist/ReactToastify.css";
-export default function Pokedex(pokedexData) {
+
+const Pokedex = pokedexData => {
   const pokemonsInPokedex = (pokedexData.pokedexList || []).map(pokemon => {
     return (
       <li
@@ -57,4 +58,6 @@ export default function Pokedex(pokedexData) {
       </div>
     </div>
   );
-}
+};
+
+export { Pokedex };

@@ -1,6 +1,7 @@
 import "./Tooltip.css";
 import React from "react";
-export default function Tooltip({ children, content }) {
+
+const Tooltip = ({ children, content }) => {
   const [ isVisible, setIsVisible ] = React.useState(false);
   return (
     <div
@@ -14,4 +15,6 @@ export default function Tooltip({ children, content }) {
       {children}
     </div>
   );
-}
+};
+
+export { Tooltip };

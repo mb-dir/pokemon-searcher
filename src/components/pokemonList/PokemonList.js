@@ -1,10 +1,10 @@
 import "./PokemonList.css";
 import { ToastContainer, toast } from "react-toastify";
-import PokemonCard from "../pokemonCard/PokemonCard";
-import Tooltip from "../tooltip/Tooltip";
+import { PokemonCard } from "../pokemonCard/PokemonCard";
+import { Tooltip } from "../tooltip/Tooltip";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function PokemonList(pokemonData) {
+const PokemonList = pokemonData => {
   const listToRender =
     pokemonData.currentPokemonName === ""
       ? pokemonData.pokemonData
@@ -70,4 +70,5 @@ export default function PokemonList(pokemonData) {
       )}
     </main>
   );
-}
+};
+export { PokemonList };

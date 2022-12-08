@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import PokemonList from "./components/pokemonList/PokemonList";
-import Search from "./components/search/Search";
-import Pokedex from "./components/pokedex/Pokedex";
+import { PokemonList } from "./components/pokemonList/PokemonList";
+import { Search } from "./components/search/Search";
+import { Pokedex } from "./components/pokedex/Pokedex";
 import { setItemToStorage, getItemFromStorage } from "./helpers/storage";
 
 function App() {
