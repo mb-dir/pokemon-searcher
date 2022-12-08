@@ -4,12 +4,17 @@ import { PokemonCard } from "../pokemonCard/PokemonCard";
 import { Tooltip } from "../tooltip/Tooltip";
 import "react-toastify/dist/ReactToastify.css";
 
-const PokemonList = pokemonData => {
+const PokemonList = ({
+  pokemonData,
+  currentPokemonName,
+  requestStatus,
+  addToPokedex,
+}) => {
   const listToRender =
-    pokemonData.currentPokemonName === ""
-      ? pokemonData.pokemonData
-      : pokemonData.pokemonData.filter(pokemon => {
-          return pokemon.pokemonName.includes(pokemonData.currentPokemonName);
+    currentPokemonName === ""
+      ? pokemonData
+      : pokemonData.filter(pokemon => {
+          return pokemon.pokemonName.includes(currentPokemonName);
         });
 
   const pokemonList = listToRender.map(pokemon => {
@@ -34,7 +39,7 @@ const PokemonList = pokemonData => {
         <button
           className="pokemonList__add"
           onClick={() => {
-            pokemonData.addToPokedex(pokemon);
+            addToPokedex(pokemon);
             toast.info(`${pokemon.pokemonName} was added`);
           }}
         >
@@ -45,9 +50,9 @@ const PokemonList = pokemonData => {
   });
 
   let pokemonListContent = <p>Wait for pokemons</p>;
-  if (pokemonData.requestStatus === "rejected") {
+  if (requestStatus === "rejected") {
     pokemonListContent = <p>Something went wrong, try to reset the app</p>;
-  } else if (pokemonData.requestStatus === "resovled") {
+  } else if (requestStatus === "resovled") {
     pokemonListContent = pokemonList;
   }
 
@@ -60,8 +65,8 @@ const PokemonList = pokemonData => {
         pauseOnHover={false}
       />
       {listToRender.length === 0 &&
-      pokemonData.currentPokemonName !== "" &&
-      pokemonData.requestStatus === "resovled" ? (
+      currentPokemonName !== "" &&
+      requestStatus === "resovled" ? (
         <p className="pokemonList__noFoundInfo">
           No pokemon with this name was found
         </p>
