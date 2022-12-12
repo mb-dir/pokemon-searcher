@@ -37,7 +37,7 @@ function App() {
         return pokemonsPromisesArray;
       })
       .then(res => {
-        async function fn() {
+        (async function getPokemonInfo() {
           for (const pokemon of await Promise.all(res)) {
             const {
               abilities,
@@ -61,8 +61,7 @@ function App() {
           }
           setPokemonList(pokemonsProperInfo);
           setRequestStatus("resovled");
-        }
-        fn();
+        })();
       })
       .catch(() => {
         setRequestStatus("rejected");
