@@ -2,14 +2,11 @@ import "./PokemonList.css";
 import { ToastContainer, toast } from "react-toastify";
 import { PokemonCard } from "../pokemonCard/PokemonCard";
 import { Tooltip } from "../tooltip/Tooltip";
+import { usePokedex } from "../../hooks/use-pokedex";
 import "react-toastify/dist/ReactToastify.css";
 
-const PokemonList = ({
-  pokemonData,
-  currentPokemonName,
-  requestStatus,
-  addToPokedex,
-}) => {
+const PokemonList = ({ pokemonData, currentPokemonName, requestStatus }) => {
+  const { addToPokedex } = usePokedex();
   const listToRender =
     currentPokemonName === ""
       ? pokemonData

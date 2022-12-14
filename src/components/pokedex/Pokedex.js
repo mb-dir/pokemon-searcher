@@ -2,14 +2,12 @@ import "./Pokedex.css";
 import { TbPokeball } from "react-icons/tb";
 import { toast } from "react-toastify";
 import { PokemonCard } from "../pokemonCard/PokemonCard";
+import { usePokedex } from "../../hooks/use-pokedex";
 import "react-toastify/dist/ReactToastify.css";
 
-const Pokedex = ({
-  pokedexList,
-  deleteFromPokedex,
-  togglePokedex,
-  isPokedexOpen,
-}) => {
+const Pokedex = ({ togglePokedex, isPokedexOpen }) => {
+  const { pokedexList, deleteFromPokedex } = usePokedex();
+
   const pokemonsInPokedex = (pokedexList || []).map(pokemon => {
     return (
       <li

@@ -7,13 +7,7 @@ import { usePokemonList } from "./hooks/use-pokemon-list";
 
 function App() {
   const [ currentTypedPokemonName, setCurrentTypedPokemonName ] = useState("");
-  const {
-    pokemonList,
-    requestStatus,
-    pokedexList,
-    deleteFromPokedex,
-    addToPokedex,
-  } = usePokemonList();
+  const { pokemonList, requestStatus } = usePokemonList();
 
   function updatePokemonName(name) {
     setCurrentTypedPokemonName(name);
@@ -26,12 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <Pokedex
-        isPokedexOpen={isPokedexOpen}
-        togglePokedex={togglePokedex}
-        pokedexList={pokedexList}
-        deleteFromPokedex={deleteFromPokedex}
-      />
+      <Pokedex isPokedexOpen={isPokedexOpen} togglePokedex={togglePokedex} />
       <Search
         updatePokemonName={updatePokemonName}
         currentPokemonName={currentTypedPokemonName}
@@ -39,7 +28,6 @@ function App() {
       <PokemonList
         pokemonData={pokemonList}
         currentPokemonName={currentTypedPokemonName}
-        addToPokedex={addToPokedex}
         requestStatus={requestStatus}
       />
     </div>
