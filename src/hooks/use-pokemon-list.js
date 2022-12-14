@@ -64,26 +64,20 @@ export const usePokemonList = () => {
 
   const addToPokedex = pokemon => {
     setPokedexList(prevList => {
-      const isPokemonAlreadyExist = prevList.some(element => {
-        if (element.pokemonName === pokemon.pokemonName) {
-          return true;
-        }
-        return false;
-      });
-      if (isPokemonAlreadyExist) {
-        return [ ...prevList ];
-      } else {
-        return [ ...prevList, pokemon ];
-      }
+      const isPokemonAlreadyExist = prevList.some(
+        el => el.pokemonName === pokemon.pokemonName
+      );
+
+      return isPokemonAlreadyExist ? [ ...prevList ] : [ ...prevList, pokemon ];
     });
   };
-  const deleteFromPokedex = pokemon => {
+
+  const deleteFromPokedex = ({ pokemonName }) => {
     setPokedexList(prevList => {
-      return prevList.filter(el => {
-        return el.pokemonName !== pokemon.pokemonName;
-      });
+      return prevList.filter(el => el.pokemonName !== pokemonName);
     });
   };
+
   useEffect(
     () => {
       setItemToStorage("pokedex", JSON.stringify(pokedexList));
