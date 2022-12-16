@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { setItemToStorage, getItemFromStorage } from "../helpers/storage";
+import { toast } from "react-toastify";
 
 export const usePokedex = () => {
   const [ pokedexList, setPokedexList ] = useState(() => {
@@ -11,6 +12,7 @@ export const usePokedex = () => {
       const isPokemonAlreadyExist = prevList.some(
         el => el.pokemonName === pokemon.pokemonName
       );
+      !isPokemonAlreadyExist && toast.info(`${pokemon.pokemonName} was added`);
       return isPokemonAlreadyExist ? [ ...prevList ] : [ ...prevList, pokemon ];
     });
   };

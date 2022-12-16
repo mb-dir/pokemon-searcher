@@ -1,5 +1,5 @@
 import "./PokemonList.css";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { PokemonCard } from "../pokemonCard/PokemonCard";
 import { Tooltip } from "../tooltip/Tooltip";
 import "react-toastify/dist/ReactToastify.css";
@@ -40,7 +40,6 @@ const PokemonList = ({
           className="pokemonList__add"
           onClick={() => {
             addToPokedex(pokemon);
-            toast.info(`${pokemon.pokemonName} was added`);
           }}
         >
           Add to Pokedex

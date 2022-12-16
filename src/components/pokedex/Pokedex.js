@@ -10,8 +10,6 @@ const Pokedex = ({
   pokedexList,
   deleteFromPokedex,
 }) => {
-  console.log(pokedexList);
-
   const pokemonsInPokedex = (pokedexList || []).map(pokemon => {
     return (
       <li
