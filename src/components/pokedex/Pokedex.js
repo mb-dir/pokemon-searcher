@@ -1,10 +1,18 @@
+import { useState } from "react";
 import "./Pokedex.css";
 import { TbPokeball } from "react-icons/tb";
 import { toast } from "react-toastify";
-import PokemonCard from "../pokemonCard/PokemonCard";
+import { PokemonCard } from "../pokemonCard/PokemonCard";
+import { Tooltip } from "../tooltip/Tooltip";
 import "react-toastify/dist/ReactToastify.css";
-export default function Pokedex(pokedexData) {
-  const pokemonsInPokedex = (pokedexData.pokedexList || []).map(pokemon => {
+
+const Pokedex = ({ pokedexList, deleteFromPokedex }) => {
+  const [ isPokedexOpen, setIsPokedexOpen ] = useState(false);
+  function togglePokedex() {
+    setIsPokedexOpen(prev => !prev);
+  }
+
+  const pokemonsInPokedex = (pokedexList || []).map(pokemon => {
     return (
       <li
         className="pokemonList__item pokemonList__item--small"
@@ -12,20 +20,31 @@ export default function Pokedex(pokedexData) {
       >
         <button
           onClick={() => {
-            pokedexData.deleteFromPokedex(pokemon);
+            deleteFromPokedex(pokemon);
             toast.info(`${pokemon.pokemonName} was deleted`);
           }}
           className="pokemonList__deleteFromPokedex"
         >
           x
         </button>
-        <PokemonCard
-          className="pokemonCard--small"
-          name={pokemon.pokemonName}
-          img={pokemon.pokemonImg}
-          pokemonTypes={pokemon.pokemonTypes}
-          pokemonAbilities={pokemon.pokemonAbilities}
-        />
+        <Tooltip
+          className="tooltip__card--small"
+          content={
+            <div>
+              <p>Base experienice: {pokemon.pokemonBaseExperience}</p>
+              <p>Height: {pokemon.pokemonHeight}</p>
+              <p>Weight: {pokemon.pokemonWeight}</p>
+            </div>
+          }
+        >
+          <PokemonCard
+            className="pokemonCard--small"
+            name={pokemon.pokemonName}
+            img={pokemon.pokemonImg}
+            pokemonTypes={pokemon.pokemonTypes}
+            pokemonAbilities={pokemon.pokemonAbilities}
+          />
+        </Tooltip>
       </li>
     );
   });
@@ -34,21 +53,18 @@ export default function Pokedex(pokedexData) {
     <div className="pokedex">
       <div className="pokedex__inconContainer">
         <p className="pokedex__info">Your Pokedex</p>
-        <TbPokeball
-          onClick={pokedexData.togglePokedex}
-          className="pokedex__open"
-        />
+        <TbPokeball onClick={togglePokedex} className="pokedex__open" />
       </div>
       <div
-        className={`pokedex__body ${pokedexData.isPokedexOpen
+        className={`pokedex__body ${isPokedexOpen
           ? "pokedex__body--open"
           : ""}`}
       >
-        <button onClick={pokedexData.togglePokedex} className="pokedex__close">
+        <button onClick={togglePokedex} className="pokedex__close">
           X
         </button>
         <div className="pokedex__content">
-          {pokedexData.pokedexList.length === 0 ? (
+          {pokedexList.length === 0 ? (
             <p>Your Pokedex is empty</p>
           ) : (
             pokemonsInPokedex
@@ -57,4 +73,6 @@ export default function Pokedex(pokedexData) {
       </div>
     </div>
   );
-}
+};
+
+export { Pokedex };

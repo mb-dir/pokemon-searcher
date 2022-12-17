@@ -1,8 +1,8 @@
 import "./Search.css";
-export default function Search(props) {
+const Search = ({ updatePokemonName, currentPokemonName }) => {
   //Each input change causes state update in App
   function updateName({ target }) {
-    props.updatePokemonName(target.value);
+    updatePokemonName(target.value);
   }
   return (
     <form className="searcher">
@@ -10,7 +10,7 @@ export default function Search(props) {
         Wpisz nazwe pokemona
       </label>
       <input
-        value={props.currentPokemonName}
+        value={currentPokemonName}
         onChange={updateName}
         className="search__input"
         type="text"
@@ -18,4 +18,5 @@ export default function Search(props) {
       />
     </form>
   );
-}
+};
+export { Search };
