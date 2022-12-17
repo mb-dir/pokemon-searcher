@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./Pokedex.css";
 import { TbPokeball } from "react-icons/tb";
 import { toast } from "react-toastify";
@@ -5,12 +6,12 @@ import { PokemonCard } from "../pokemonCard/PokemonCard";
 import { Tooltip } from "../tooltip/Tooltip";
 import "react-toastify/dist/ReactToastify.css";
 
-const Pokedex = ({
-  togglePokedex,
-  isPokedexOpen,
-  pokedexList,
-  deleteFromPokedex,
-}) => {
+const Pokedex = ({ pokedexList, deleteFromPokedex }) => {
+  const [ isPokedexOpen, setIsPokedexOpen ] = useState(false);
+  function togglePokedex() {
+    setIsPokedexOpen(prev => !prev);
+  }
+
   const pokemonsInPokedex = (pokedexList || []).map(pokemon => {
     return (
       <li

@@ -15,16 +15,9 @@ function App() {
     setCurrentTypedPokemonName(name);
   }
 
-  const [ isPokedexOpen, setIsPokedexOpen ] = useState(false);
-  function togglePokedex() {
-    setIsPokedexOpen(prev => !prev);
-  }
-
   return (
     <div className="App">
       <Pokedex
-        isPokedexOpen={isPokedexOpen}
-        togglePokedex={togglePokedex}
         deleteFromPokedex={deleteFromPokedex}
         pokedexList={pokedexList}
       />
