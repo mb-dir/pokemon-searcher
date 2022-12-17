@@ -1,7 +1,7 @@
 import "./Tooltip.css";
 import { useState } from "react";
 
-const Tooltip = ({ children, content }) => {
+const Tooltip = ({ children, content, className }) => {
   const [ isVisible, setIsVisible ] = useState(false);
   return (
     <div
@@ -9,7 +9,10 @@ const Tooltip = ({ children, content }) => {
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
     >
-      <div className={`tooltip__card ${isVisible && "tooltip__card--visible"}`}>
+      <div
+        className={`tooltip__card ${className} ${isVisible &&
+          "tooltip__card--visible"}`}
+      >
         {content}
       </div>
       {children}
