@@ -11,10 +11,6 @@ function App() {
   const { pokemonList, requestStatus } = usePokemonList();
   const { pokedexList, deleteFromPokedex, addToPokedex } = usePokedex();
 
-  function updatePokemonName(name) {
-    setCurrentTypedPokemonName(name);
-  }
-
   return (
     <div className="App">
       <Pokedex
@@ -22,7 +18,7 @@ function App() {
         pokedexList={pokedexList}
       />
       <Search
-        updatePokemonName={updatePokemonName}
+        updatePokemonName={name => setCurrentTypedPokemonName(name)}
         currentPokemonName={currentTypedPokemonName}
       />
       <PokemonList
