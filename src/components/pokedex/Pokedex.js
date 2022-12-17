@@ -2,6 +2,7 @@ import "./Pokedex.css";
 import { TbPokeball } from "react-icons/tb";
 import { toast } from "react-toastify";
 import { PokemonCard } from "../pokemonCard/PokemonCard";
+import { Tooltip } from "../tooltip/Tooltip";
 import "react-toastify/dist/ReactToastify.css";
 
 const Pokedex = ({
@@ -25,13 +26,24 @@ const Pokedex = ({
         >
           x
         </button>
-        <PokemonCard
-          className="pokemonCard--small"
-          name={pokemon.pokemonName}
-          img={pokemon.pokemonImg}
-          pokemonTypes={pokemon.pokemonTypes}
-          pokemonAbilities={pokemon.pokemonAbilities}
-        />
+        <Tooltip
+          className="tooltip__card--small"
+          content={
+            <div>
+              <p>Base experienice: {pokemon.pokemonBaseExperience}</p>
+              <p>Height: {pokemon.pokemonHeight}</p>
+              <p>Weight: {pokemon.pokemonWeight}</p>
+            </div>
+          }
+        >
+          <PokemonCard
+            className="pokemonCard--small"
+            name={pokemon.pokemonName}
+            img={pokemon.pokemonImg}
+            pokemonTypes={pokemon.pokemonTypes}
+            pokemonAbilities={pokemon.pokemonAbilities}
+          />
+        </Tooltip>
       </li>
     );
   });
