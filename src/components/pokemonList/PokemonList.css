@@ -11,7 +11,7 @@
   padding-top: 30px;
 }
 .pokemonList__list {
-  margin: 0;
+  margin: 0 0 60px;
   padding: 0;
   list-style-type: none;
   display: flex;
