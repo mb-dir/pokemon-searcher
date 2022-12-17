@@ -12,7 +12,12 @@ export const usePokedex = () => {
       const isPokemonAlreadyExist = prevList.some(
         el => el.pokemonName === pokemon.pokemonName
       );
-      !isPokemonAlreadyExist && toast.info(`${pokemon.pokemonName} was added`);
+
+      if (isPokemonAlreadyExist) {
+        toast.info(`${pokemon.pokemonName} is already in pokedex`);
+        return [ ...prevList ];
+      }
+      toast.info(`${pokemon.pokemonName} was added`);
       return isPokemonAlreadyExist ? [ ...prevList ] : [ ...prevList, pokemon ];
     });
   };
