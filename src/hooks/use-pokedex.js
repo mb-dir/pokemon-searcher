@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 export const usePokedex = () => {
   const [ pokedexList, setPokedexList ] = useState(() => {
-    return JSON.parse(getItemFromStorage("pokedex")) || [];
+    return JSON.parse(getItemFromStorage("pokedex") || []);
   });
 
   const addToPokedex = pokemon => {
