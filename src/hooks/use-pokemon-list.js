@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { singlePokemonPromise, getPokemons } from "../services/pokemon";
 
 export const usePokemonList = () => {
   const [ pokemonList, setPokemonList ] = useState([]);
@@ -7,9 +8,7 @@ export const usePokemonList = () => {
   function createPokemonPromise(pokemonUrl) {
     return new Promise(async resolve => {
       try {
-        const pokemonPromise = await fetch(pokemonUrl);
-        const pokemonPromiseResponse = await pokemonPromise.json();
-        resolve(pokemonPromiseResponse);
+        resolve(singlePokemonPromise(pokemonUrl));
       } catch (e) {
         setRequestStatus("rejected");
       }
@@ -21,12 +20,10 @@ export const usePokemonList = () => {
       try {
         const pokemonsPromisesArray = [];
 
-        const pokemons = await fetch(
-          "https://pokeapi.co/api/v2/pokemon/?limit=100"
-        );
-        const pokemonsResponse = await pokemons.json();
+        //Returns array with basic info about pokemon, to get more data about pokemon we need to crete another promise based on pokemon url
+        const pokemons = await getPokemons();
 
-        await pokemonsResponse.results.forEach(pokemon => {
+        await pokemons.forEach(pokemon => {
           const pokemonPromise = createPokemonPromise(pokemon.url);
           pokemonsPromisesArray.push(pokemonPromise);
         });
