@@ -17,7 +17,7 @@ const PokemonList = ({
           return pokemon.pokemonName.includes(currentPokemonName);
         });
 
-  const pokemonList = listToRender.map(pokemon => {
+  const pokemonList = (listToRender || []).map(pokemon => {
     return (
       <li className="pokemonList__item" key={pokemon.pokemonName}>
         <Tooltip
