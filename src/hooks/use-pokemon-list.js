@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { singlePokemonPromise, getPokemons } from "../services/pokemon";
+import { getID } from "../helpers/getID";
 
 export const usePokemonList = () => {
   const [ pokemonList, setPokemonList ] = useState([]);
@@ -24,7 +25,8 @@ export const usePokemonList = () => {
         const pokemons = await getPokemons();
 
         await pokemons.forEach(pokemon => {
-          const pokemonPromise = createPokemonPromise(pokemon.url);
+          const pokemonID = getID(pokemon.url);
+          const pokemonPromise = createPokemonPromise(pokemonID);
           pokemonsPromisesArray.push(pokemonPromise);
         });
 
