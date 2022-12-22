@@ -55,6 +55,11 @@ const PokemonList = ({
     pokemonListContent = pokemonList;
   }
 
+  const isPokemonFound =
+    listToRender.length === 0 &&
+    currentPokemonName !== "" &&
+    requestStatus === "resovled";
+
   return (
     <main className="pokemonList">
       <ToastContainer
@@ -63,9 +68,7 @@ const PokemonList = ({
         pauseOnFocusLoss={false}
         pauseOnHover={false}
       />
-      {listToRender.length === 0 &&
-      currentPokemonName !== "" &&
-      requestStatus === "resovled" ? (
+      {isPokemonFound ? (
         <p className="pokemonList__noFoundInfo">
           No pokemon with this name was found
         </p>
