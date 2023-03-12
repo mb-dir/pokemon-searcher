@@ -19,7 +19,8 @@ function App() {
         pokedexList={pokedexList}
       />
       <Search
-        updatePokemonName={name => setCurrentTypedPokemonName(name)}
+        updatePokemonName={(name: React.SetStateAction<string>) =>
+          setCurrentTypedPokemonName(name)}
         currentPokemonName={currentTypedPokemonName}
       />
       <PokemonList

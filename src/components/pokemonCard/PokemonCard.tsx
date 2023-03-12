@@ -1,6 +1,16 @@
+import { pokemonTypes, pokemonAbilities } from "types";
 import "./PokemonCard.css";
+import React from "react";
 
-const PokemonCard = ({
+interface PokemonCardProps {
+  name: string;
+  img: string;
+  pokemonTypes: pokemonTypes[];
+  pokemonAbilities: pokemonAbilities[];
+  className?: string;
+}
+
+const PokemonCard: React.FC<PokemonCardProps> = ({
   name,
   img,
   pokemonTypes,

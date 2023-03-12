@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
 import { singlePokemonPromise, getPokemons } from "../services/pokemon";
 import { getID } from "../helpers/getID";
+import { REQUEST_STATUS } from "../enums";
 
 export const usePokemonList = () => {
   const [ pokemonList, setPokemonList ] = useState([]);
-  const [ requestStatus, setRequestStatus ] = useState("pending");
+  const [ requestStatus, setRequestStatus ] = useState<REQUEST_STATUS>(
+    REQUEST_STATUS.PENDING
+  );
 
-  function createPokemonPromise(pokemonUrl) {
+  function createPokemonPromise(pokemonUrl: string) {
     return new Promise(async resolve => {
       try {
         resolve(singlePokemonPromise(pokemonUrl));
       } catch (e) {
-        setRequestStatus("rejected");
+        setRequestStatus(REQUEST_STATUS.REJECTED);
       }
     });
   }
@@ -32,7 +35,7 @@ export const usePokemonList = () => {
 
         return pokemonsPromisesArray;
       } catch (e) {
-        setRequestStatus("rejected");
+        setRequestStatus(REQUEST_STATUS.REJECTED);
       }
     }
 
@@ -62,9 +65,9 @@ export const usePokemonList = () => {
           pokemonsProperInfo.push(pokemonObj);
         }
         setPokemonList(pokemonsProperInfo);
-        setRequestStatus("resovled");
+        setRequestStatus(REQUEST_STATUS.RESOLVED);
       } catch (e) {
-        setRequestStatus("rejected");
+        setRequestStatus(REQUEST_STATUS.REJECTED);
       }
     })();
   }, []);

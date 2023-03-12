@@ -1,8 +1,8 @@
-function setItemToStorage(key, value) {
+function setItemToStorage(key: string, value: string) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
-function getItemFromStorage(key) {
+function getItemFromStorage(key: string) {
   const itemString = localStorage.getItem(key);
   if (!itemString) {
     return null;
@@ -10,7 +10,7 @@ function getItemFromStorage(key) {
   return JSON.parse(itemString);
 }
 
-function deleteItemFromStorage(key) {
+function deleteItemFromStorage(key: string) {
   localStorage.removeItem(key);
 }
 
