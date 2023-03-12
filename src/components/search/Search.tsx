@@ -1,3 +1,4 @@
+import React from "react";
 import "./Search.css";
 const Search = ({ updatePokemonName, currentPokemonName }) => {
   //Each input change causes state update in App

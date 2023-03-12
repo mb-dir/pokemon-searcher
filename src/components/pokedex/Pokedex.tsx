@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { PokemonCard } from "../pokemonCard/PokemonCard";
 import { Tooltip } from "../tooltip/Tooltip";
 import "react-toastify/dist/ReactToastify.css";
+import React from "react";
 
 const Pokedex = ({ pokedexList, deleteFromPokedex }) => {
   const [ isPokedexOpen, setIsPokedexOpen ] = useState(false);

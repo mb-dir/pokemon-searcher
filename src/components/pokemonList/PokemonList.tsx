@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import { PokemonCard } from "../pokemonCard/PokemonCard";
 import { Tooltip } from "../tooltip/Tooltip";
 import "react-toastify/dist/ReactToastify.css";
+import React from "react";
 
 const PokemonList = ({
   pokemonData,
