@@ -21,3 +21,8 @@ export type pokemonAbilities = {
   is_hidden: boolean;
   slot: number;
 };
+
+export type pokemonPromise = {
+  name: string;
+  url: string;
+};
