@@ -3,8 +3,18 @@ import { ToastContainer } from "react-toastify";
 import { PokemonCard } from "../pokemonCard/PokemonCard";
 import { Tooltip } from "../tooltip/Tooltip";
 import "react-toastify/dist/ReactToastify.css";
+import React, { ReactNode } from "react";
+import { singlePokemon } from "../../types";
+import { REQUEST_STATUS } from "enums";
 
-const PokemonList = ({
+interface PokemonListProps {
+  pokemonData: singlePokemon[];
+  currentPokemonName: string;
+  requestStatus: REQUEST_STATUS;
+  addToPokedex: (pokemon: singlePokemon) => void;
+}
+
+const PokemonList: React.FC<PokemonListProps> = ({
   pokemonData,
   currentPokemonName,
   requestStatus,
@@ -13,11 +23,11 @@ const PokemonList = ({
   const listToRender =
     currentPokemonName === ""
       ? pokemonData
-      : pokemonData.filter(pokemon => {
+      : pokemonData.filter((pokemon: singlePokemon) => {
           return pokemon.pokemonName.includes(currentPokemonName);
         });
 
-  const pokemonList = (listToRender || []).map(pokemon => {
+  const pokemonList = (listToRender || []).map((pokemon: singlePokemon) => {
     return (
       <li className="pokemonList__item" key={pokemon.pokemonName}>
         <Tooltip
@@ -48,17 +58,17 @@ const PokemonList = ({
     );
   });
 
-  let pokemonListContent = <p>Wait for pokemons</p>;
-  if (requestStatus === "rejected") {
+  let pokemonListContent: ReactNode = <p>Wait for pokemons</p>;
+  if (requestStatus === REQUEST_STATUS.REJECTED) {
     pokemonListContent = <p>Something went wrong, try to reset the app</p>;
-  } else if (requestStatus === "resovled") {
+  } else if (requestStatus === REQUEST_STATUS.RESOLVED) {
     pokemonListContent = pokemonList;
   }
 
   const isPokemonFound =
     listToRender.length === 0 &&
     currentPokemonName !== "" &&
-    requestStatus === "resovled";
+    requestStatus === REQUEST_STATUS.RESOLVED;
 
   return (
     <main className="pokemonList">

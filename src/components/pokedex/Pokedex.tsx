@@ -5,8 +5,18 @@ import { toast } from "react-toastify";
 import { PokemonCard } from "../pokemonCard/PokemonCard";
 import { Tooltip } from "../tooltip/Tooltip";
 import "react-toastify/dist/ReactToastify.css";
+import React from "react";
+import { singlePokemon } from "../../types";
 
-const Pokedex = ({ pokedexList, deleteFromPokedex }) => {
+interface PokedexProps {
+  pokedexList: singlePokemon[];
+  deleteFromPokedex: (pokemon: singlePokemon) => void;
+}
+
+const Pokedex: React.FC<PokedexProps> = ({
+  pokedexList,
+  deleteFromPokedex,
+}) => {
   const [ isPokedexOpen, setIsPokedexOpen ] = useState(false);
   function togglePokedex() {
     setIsPokedexOpen(prev => !prev);

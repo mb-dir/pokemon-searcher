@@ -5,6 +5,7 @@ import { Search } from "./components/search/Search";
 import { Pokedex } from "./components/pokedex/Pokedex";
 import { usePokemonList } from "./hooks/use-pokemon-list";
 import { usePokedex } from "./hooks/use-pokedex";
+import React from "react";
 
 function App() {
   const [ currentTypedPokemonName, setCurrentTypedPokemonName ] = useState("");
@@ -18,7 +19,8 @@ function App() {
         pokedexList={pokedexList}
       />
       <Search
-        updatePokemonName={name => setCurrentTypedPokemonName(name)}
+        updatePokemonName={(name: React.SetStateAction<string>) =>
+          setCurrentTypedPokemonName(name)}
         currentPokemonName={currentTypedPokemonName}
       />
       <PokemonList

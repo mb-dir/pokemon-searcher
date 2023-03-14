@@ -9,7 +9,7 @@ export async function getPokemons() {
   return data.results;
 }
 
-export async function singlePokemonPromise(id) {
+export async function singlePokemonPromise(id: string) {
   const { data } = await axiosApi.get(`pokemon/${id}`);
 
   return data;

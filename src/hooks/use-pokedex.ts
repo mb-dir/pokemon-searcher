@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { setItemToStorage, getItemFromStorage } from "../helpers/storage";
 import { toast } from "react-toastify";
+import { singlePokemon } from "../types";
 
 export const usePokedex = () => {
   const [ pokedexList, setPokedexList ] = useState(() => {
     return JSON.parse(getItemFromStorage("pokedex") || "[]");
   });
 
-  const addToPokedex = pokemon => {
-    setPokedexList(prevList => {
+  const addToPokedex = (pokemon: singlePokemon) => {
+    setPokedexList((prevList: singlePokemon[]) => {
       const isPokemonAlreadyExist = prevList.some(
         el => el.pokemonName === pokemon.pokemonName
       );
@@ -22,9 +23,9 @@ export const usePokedex = () => {
     });
   };
 
-  const deleteFromPokedex = ({ pokemonName }) => {
-    setPokedexList(prevList => {
-      return prevList.filter(el => el.pokemonName !== pokemonName);
+  const deleteFromPokedex = (pokemon: singlePokemon) => {
+    setPokedexList((prevList: singlePokemon[]) => {
+      return prevList.filter(el => el.pokemonName !== pokemon.pokemonName);
     });
   };
 

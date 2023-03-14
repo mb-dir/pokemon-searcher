@@ -1,9 +1,15 @@
+import React from "react";
 import "./Search.css";
-const Search = ({ updatePokemonName, currentPokemonName }) => {
-  //Each input change causes state update in App
-  function updateName({ target }) {
-    updatePokemonName(target.value);
-  }
+
+interface SearchProps {
+  updatePokemonName: (value: string) => void;
+  currentPokemonName: string;
+}
+
+const Search: React.FC<SearchProps> = ({
+  updatePokemonName,
+  currentPokemonName,
+}) => {
   return (
     <form className="searcher">
       <label htmlFor="search" className="searcher__description">
@@ -11,7 +17,9 @@ const Search = ({ updatePokemonName, currentPokemonName }) => {
       </label>
       <input
         value={currentPokemonName}
-        onChange={updateName}
+        onChange={({ target }) => {
+          updatePokemonName(target.value);
+        }}
         className="search__input"
         type="text"
         id="search"
